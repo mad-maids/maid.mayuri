@@ -33,6 +33,7 @@ export class CommandHandler {
     const allowedCommands = this.commands.filter((command) =>
       command.hasPermissionToRun(commandContext)
     );
+
     const matchedCommand = this.commands.find((command) =>
       command.commandNames.includes(commandContext.parsedCommandName)
     );
@@ -48,6 +49,7 @@ export class CommandHandler {
         .run(commandContext)
         .then(() => {
           reactor.success(message);
+          matchedCommand.log();
         })
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .catch((reason) => {

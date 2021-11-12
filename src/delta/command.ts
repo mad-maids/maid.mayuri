@@ -8,6 +8,9 @@ export interface Command {
    */
   readonly commandNames: string[];
 
+  /** Command's logger which gets executed when command runs. */
+  log(): Promise<void>;
+
   /** Usage documentation. */
   getHelpMessage(commandPrefix: string): string;
 

@@ -3,6 +3,7 @@
  *
  * Revisions to this file should not be committed to the repository.
  */
+import { ActivitiesOptions } from "discord.js";
 
 export type BotConfig = {
   /** the Discord bot token. */
@@ -13,6 +14,13 @@ export type BotConfig = {
   botOwnerRoleName: string;
   /** The bot will add reactions to the command messages indicating success or failure. */
   enableReactions: boolean;
+  /** The activity of bot. */
+  activity: {
+    /** The type of activity. */
+    type: ActivitiesOptions;
+    /** The name of the activity. */
+    action: string;
+  };
 };
 
 const config: BotConfig = {
@@ -20,6 +28,10 @@ const config: BotConfig = {
   prefix: process.env.PREFIX,
   botOwnerRoleName: process.env.OWNER,
   enableReactions: process.env.REACTIONS === "true",
+  activity: {
+    type: { type: "PLAYING" },
+    action: "with other maids!",
+  },
 };
 
 export default config;

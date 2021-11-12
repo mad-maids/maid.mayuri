@@ -1,5 +1,6 @@
 import { CommandContext } from "@model/commands";
 import { Command } from "@delta/command";
+import chalk from "chalk";
 
 export class HelpCommand implements Command {
   readonly commandNames = ["help", "halp", "hlep"];
@@ -56,6 +57,14 @@ export class HelpCommand implements Command {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   hasPermissionToRun(commandContext: CommandContext): boolean {
     return true;
+  }
+
+  async log() {
+    await console.log(
+      chalk.yellow("[ACTIVITY]"),
+      chalk.green("Help"),
+      "Command"
+    );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
