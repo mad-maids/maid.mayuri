@@ -16,7 +16,10 @@
     "paths": {
       "*": ["node_modules/*"],
       "@src/*": ["src/*"],
-      "@core/*": ["src/core/*"]
+      "@core/*": ["src/core/*"],
+      "@delta/*": ["src/delta/*"],
+      "@model/*": ["src/model/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src/**/*"]

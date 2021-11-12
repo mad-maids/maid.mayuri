@@ -38,6 +38,9 @@
   },
   "_moduleAliases": {
     "@src": "dist",
-    "@core": "dist/core"
+    "@core": "dist/core",
+    "@delta": "dist/delta",
+    "@model": "dist/model",
+    "@utils": "dist/utils"
   }
 }
