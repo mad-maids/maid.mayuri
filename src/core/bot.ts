@@ -1,11 +1,6 @@
-import dotenv from "dotenv";
-import Discord, { Intents } from "discord.js";
+import { Client, Intents } from "discord.js";
 
-(async () => {
-  await dotenv.config();
-})();
-
-const client = new Discord.Client({
+const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 

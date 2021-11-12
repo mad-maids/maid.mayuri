@@ -1,0 +1,6 @@
+dist/*
+coverage/*
+**/*.d.ts
+/src/public/
+/src/types/
+
