@@ -39,6 +39,5 @@
   "_moduleAliases": {
     "@src": "dist",
     "@core": "dist/core"
-  },
-
+  }
 }

@@ -6,7 +6,9 @@
 
 import * as dotenv from "dotenv";
 (async () => {
-  await dotenv.config();
+  if (process.env.NODE_ENV !== "production") {
+    await dotenv.config();
+  }
 })();
 
 export default process.env;
