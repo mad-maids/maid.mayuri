@@ -1,26 +1,32 @@
 import chalk from "chalk";
-import { Client, Intents } from "discord.js";
+import configs from "@utils/configs";
+import validator from "@utils/validator";
+import { CommandHandler } from "@utils/handler";
+import { Client, Intents, Message } from "discord.js";
 
-if (!process.env.TOKEN) {
-  console.log(chalk.red("[ERROR]") + " Token not found!");
-  process.exit(1);
-}
+(async () => {
+  await validator(configs);
+})();
+
+const handler = new CommandHandler(configs.prefix);
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 
-client.on("ready", () => {
-  console.log(chalk.blue("[LOG]"), "Ready...");
+client.on("ready", async () => {
+  await console.log(chalk.blue("[LOG]"), "Ready...");
 });
 
-client.on("messageCreate", async (message) => {
-  if (message.content === "ping") {
-    await message.reply("pong");
-  }
+client.on("messageCreate", async (message: Message) => {
+  await handler.handleMessage(message);
+});
+
+client.on("error", async (error: Error) => {
+  await console.log(chalk.red("[ERROR]"), error);
 });
 
 client
-  .login(process.env.TOKEN)
-  .then(() => console.log(chalk.blue("[LOG]"), "Logged in..."))
-  .catch((e) => console.log(chalk.red("[ERROR]"), e));
+  .login(configs.token)
+  .then(async () => console.log(chalk.blue("[LOG]"), "Logged in..."))
+  .catch(async (e) => console.log(chalk.red("[ERROR]"), e));
